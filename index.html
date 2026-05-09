@@ -1,0 +1,103 @@
+<!-- This is imperative code
+
+We tell the computer exactly how to do it 
+
+Imperative is like chef making pizza
+Declarative is like ordering pizza -->
+
+<!-- <html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+     Babel Script
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+      // Select the div element with 'app' id
+      const app = document.getElementById('app');
+
+      // Create a new h1 element
+      const header = document.createElement('h1');
+
+      // Create a new text node for the h1 element
+      const text = 'Develop. Preview. Ship.';
+      const headerContent = document.createTextNode(text);
+
+      // Apped the text to the h1 element
+      header.appendChild(headerContent);
+
+      // Place the h1 element inside the div
+      app.appendChild(header);
+    </script>
+  </body>
+
+</html> -->
+
+<!--
+    let's say I want to add root.render() method to render react code to DOM. 
+
+    I will get an error because it will not be valid JS, it is JSX
+    JSX is a way to write HTML-like code in JavaScript. Pretty neat, right?
+    also bonus is you do not need to learn new syntax, its just HTML and JavaScript
+    BUT... you will need to compile it because the browser is like "new phone who dis?"
+    We can use Babel to compile JSX into regular JavaScript that the browser can understand.
+-->
+
+<!-- Declarative code-->
+
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+     <!--Babel Script-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+      const domNode = document.getElementById('app');
+
+      function Header({ title }) {
+        console.log(title); // "React"
+        return <h1>{title}</h1>;
+      }
+
+      function HomePage() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+        function handleClick() {
+          console.log("increment like count")
+        }
+
+        const [likes, setLikes] = React.useState(0);
+
+        // return (
+        //   <div>
+        //     {/* ... */
+        //       <button onClick={handleClick}>Like</button>
+        //     }
+        // )
+  
+        return (
+          <div>
+            {/* Nesting the Header component */}
+            <Header title="Develop. Preview. Ship." />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+            <button onClick={handleClick}>Like</button>
+          </div>
+        );
+      }
+      const root = ReactDOM.createRoot(app);
+      // capitalize the React Component or you get error
+      root.render(<HomePage />);
+
+    </script>
+  </body>
+
+  <!-- notes: 
+  You know a button is react compnent because for example <MyButton /> is
+  capitalized 
+  -->
+
